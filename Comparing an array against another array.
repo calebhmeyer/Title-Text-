@@ -1,0 +1,26 @@
+        a = current_studio.val
+        b = current_name.val
+        c = current_number.val
+        # split the strings using a regular expression that considers words that start with a letter and apostrophes
+        a_words = re.findall(r"(?<!\S)[A-Za-z](?:[A-Za-z']*[A-Za-z])?", a)
+        b_words = re.findall(r"(?<!\S)[A-Za-z](?:[A-Za-z']*[A-Za-z])?", b)
+        num_words = re.findall(r"(?<!\S)[A-Za-z](?:[A-Za-z']*[A-Za-z])?", c)
+
+        try:
+            number_field = int(current_number.val.strip())
+            # If it's a routine number
+            current_mode = 1 #Comp mode 
+        except AttributeError:
+            # Code that gets used if it's not a routine number
+            current_mode = 0 #Limbo mode
+            if studio_field in break_search_words: # or name_field in break_search_words:
+                current_mode = 2 #Break 
+            for i in a_words: 
+                if i in awards_search_words:
+                    current_mode = 3 #Awards
+            for i in a_words: 
+                if i in preshow_search_words:
+                    current_mode = 4 #Preshow            
+            for i in num_words: 
+                if i in preshow_search_words:
+                    current_mode = 4 
