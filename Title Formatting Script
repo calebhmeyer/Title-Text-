@@ -1,0 +1,17 @@
+        a = current_studio.val
+        b = current_name.val
+        c = current_number.val
+        # split the strings using a regular expression that considers words that start with a letter and apostrophes
+        a_words = re.findall(r"(?<!\S)[A-Za-z](?:[A-Za-z']*[A-Za-z])?", a)
+        b_words = re.findall(r"(?<!\S)[A-Za-z](?:[A-Za-z']*[A-Za-z])?", b)
+        num_words = re.findall(r"(?<!\S)[A-Za-z](?:[A-Za-z']*[A-Za-z])?", c)
+        # capitalize the first character of each word and keep the rest of the characters as they are
+        a_title = ' '.join([word.capitalize() for word in a_words])
+        b_title = ' '.join([word.capitalize() for word in b_words])
+
+        a_title = a_title.replace('**', '') # remove asterisks around the text
+        b_title = b_title.replace('**', '') # remove asterisks around the text
+        if current_number == type(int):
+            pass
+        else: 
+            current_number_text = current_number.val.replace('**', '') # remove asterisks around the text
